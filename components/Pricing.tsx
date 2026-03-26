@@ -1,55 +1,25 @@
-const APP_URL = 'https://shtirletzsled.ru/login'
-
-const plans = [
-  {
-    label: 'FREE',
-    amount: '0',
-    currency: '₽',
-    period: 'навсегда',
-    features: ['2 проверки в неделю', 'Все 9 этапов pipeline', 'PDF экспорт', 'Риск-скоринг 0–100'],
-    cta: 'НАЧАТЬ БЕСПЛАТНО',
-    href: APP_URL,
-    featured: false,
-  },
-  {
-    label: 'PRO',
-    amount: '1500',
-    currency: '₽',
-    period: 'в месяц / безлимит',
-    features: ['Безлимитные проверки', 'Все источники данных', 'PDF + JSON экспорт', 'История проверок', 'Приоритетная обработка'],
-    cta: 'ОФОРМИТЬ ПОДПИСКУ',
-    href: APP_URL,
-    featured: true,
-  },
-  {
-    label: 'ENTERPRISE',
-    amount: 'По запросу',
-    currency: '',
-    period: 'индивидуальные условия',
-    features: ['Полная интеграция в ваши системы', 'Ваши HR и СБ получают то же что видит наш админ', 'Неограниченное число пользователей', 'Персональный менеджер и поддержка 24/7', 'Соответствие 152-ФЗ под ключ'],
-    cta: 'ОБСУДИТЬ УСЛОВИЯ',
-    href: 'mailto:enterprise@shtirletzsled.ru',
-    featured: false,
-  },
-]
+'use client'
+import { useLanguage } from '@/app/LanguageContext'
 
 export default function Pricing() {
+  const { t } = useLanguage()
+
   return (
     <section id="pricing" className="bg-[#0A0A0A] py-28 md:py-36 px-6 md:px-16
                                       border-t border-[#E8E0D4]/[.06]">
       <div className="max-w-6xl mx-auto">
         <div className="font-[family-name:var(--font-mono)] text-[10px] tracking-[.25em]
                         uppercase text-[#C4955A]/60 mb-16">
-          {'[ТАРИФЫ]'}
+          {t.pricing.label}
         </div>
 
         <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(32px,5vw,64px)]
                        leading-[1] tracking-[.02em] text-[#E8E0D4] mb-16">
-          {'НАЧНИТЕ БЕСПЛАТНО'}
+          {t.pricing.heading}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {plans.map((p, i) => (
+          {t.pricing.plans.map((p, i) => (
             <div key={i}
                  className={`flex flex-col p-8 md:p-10
                              border-l-[3px] bg-[#1A1A1A]

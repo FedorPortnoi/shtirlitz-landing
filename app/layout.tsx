@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Bebas_Neue, JetBrains_Mono, Mulish } from 'next/font/google'
+import { LanguageProvider } from './LanguageContext'
 import './globals.css'
 
 const bebas = Bebas_Neue({
@@ -40,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${bebas.variable} ${jetbrains.variable} ${mulish.variable} font-[family-name:var(--font-body)]`}>
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   )

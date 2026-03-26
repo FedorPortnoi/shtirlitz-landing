@@ -1,8 +1,10 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { useLanguage } from '@/app/LanguageContext'
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -98,7 +100,7 @@ export default function Hero() {
                        leading-[0.85] tracking-[.04em] text-[#E8E0D4]
                        text-center fadeUp"
             style={{ animationDelay: '.3s', opacity: 0 }}>
-          ШТИРЛИЦ
+          {t.hero.title}
         </h1>
 
         {/* Subtitle — mono, small, precise */}
@@ -107,7 +109,7 @@ export default function Hero() {
           <div className="h-[1px] w-8 bg-[#C4955A]/40" />
           <p className="font-[family-name:var(--font-mono)] text-[12px] md:text-[13px]
                         tracking-[.12em] uppercase text-[#C4955A]">
-            Буратино за 5 минут. Автоматически.
+            {t.hero.subtitle}
           </p>
           <div className="h-[1px] w-8 bg-[#C4955A]/40" />
         </div>
@@ -116,7 +118,7 @@ export default function Hero() {
         <p className="font-[family-name:var(--font-mono)] text-[10px] text-[#E8E0D4]/20
                       tracking-[.15em] text-center mt-5 fadeUp"
            style={{ animationDelay: '.8s', opacity: 0 }}>
-          СУДЫ / ФССП / ЕГРЮЛ / ВКОНТАКТЕ / TELEGRAM / САНКЦИИ
+          {t.hero.tags}
         </p>
 
         {/* CTA */}
@@ -128,11 +130,11 @@ export default function Hero() {
                         border border-[#C4955A] text-[#C4955A] px-10 py-3.5
                         no-underline transition-all duration-300
                         hover:bg-[#C4955A] hover:text-[#0A0A0A]">
-            ПОПРОБОВАТЬ БЕСПЛАТНО
+            {t.hero.cta}
           </a>
           <p className="font-[family-name:var(--font-mono)] text-[9px] text-[#E8E0D4]/15
                         tracking-[.1em] mt-4">
-            2 ПРОВЕРКИ / НЕДЕЛЮ &middot; БЕЗ КАРТЫ
+            {t.hero.subtext}
           </p>
         </div>
       </div>
