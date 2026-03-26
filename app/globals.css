@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-card: #1A1A1A;
+  --bg-elevated: #111111;
+  --text-primary: #E8E0D4;
+  --text-muted: #E8E0D4aa;
+  --text-dim: #E8E0D466;
+  --text-ghost: #E8E0D433;
+  --accent: #C4955A;
+  --accent-hover: #D4A56A;
+  --green-terminal: #4ADE80;
+  --green-subtle: #2A2A1A;
+  --border: #E8E0D40F;
+  --border-strong: #E8E0D41A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fadeUp { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes typeIn {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Selection */
+::selection {
+  background: #C4955A44;
+  color: #E8E0D4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #E8E0D415; }
+::-webkit-scrollbar-thumb:hover { background: #E8E0D430; }

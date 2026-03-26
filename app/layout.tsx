@@ -1,0 +1,47 @@
+import type { Metadata } from 'next'
+import { Bebas_Neue, JetBrains_Mono, Mulish } from 'next/font/google'
+import './globals.css'
+
+const bebas = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-bebas',
+  display: 'swap',
+})
+
+const jetbrains = JetBrains_Mono({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
+const mulish = Mulish({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-body',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: '\u0428\u0422\u0418\u0420\u041B\u0418\u0426 \u2014 \u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u043A\u0430\u043D\u0434\u0438\u0434\u0430\u0442\u043E\u0432 | \u0410\u043B\u044C\u0442\u0435\u0440\u043D\u0430\u0442\u0438\u0432\u0430 \u0411\u0443\u0440\u0430\u0442\u0438\u043D\u043E',
+  description: '\u041F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u043A\u0430\u043D\u0434\u0438\u0434\u0430\u0442\u043E\u0432 \u0437\u0430 5 \u043C\u0438\u043D\u0443\u0442. \u0421\u0443\u0434\u044B, \u0424\u0421\u0421\u041F, \u0415\u0413\u0420\u042E\u041B, \u0412\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u0435, Telegram, \u0441\u0430\u043D\u043A\u0446\u0438\u0438 \u2014 \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438.',
+  keywords: '\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u043A\u0430\u043D\u0434\u0438\u0434\u0430\u0442\u043E\u0432, OSINT, \u0430\u043B\u044C\u0442\u0435\u0440\u043D\u0430\u0442\u0438\u0432\u0430 \u0411\u0443\u0440\u0430\u0442\u0438\u043D\u043E, \u0424\u0421\u0421\u041F, \u0415\u0413\u0420\u042E\u041B, HR \u0441\u043A\u0440\u0438\u043D\u0438\u043D\u0433',
+  openGraph: {
+    title: '\u0428\u0422\u0418\u0420\u041B\u0418\u0426 \u2014 \u0411\u0443\u0440\u0430\u0442\u0438\u043D\u043E \u0437\u0430 5 \u043C\u0438\u043D\u0443\u0442',
+    description: '\u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u043A\u0430\u043D\u0434\u0438\u0434\u0430\u0442\u043E\u0432 \u0431\u0435\u0437 \u0430\u043D\u0430\u043B\u0438\u0442\u0438\u043A\u0430',
+    url: 'https://shtirletzsled.ru',
+  }
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="ru">
+      <body className={`${bebas.variable} ${jetbrains.variable} ${mulish.variable} font-[family-name:var(--font-body)]`}>
+        {children}
+      </body>
+    </html>
+  )
+}
