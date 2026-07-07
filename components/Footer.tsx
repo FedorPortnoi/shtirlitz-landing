@@ -1,5 +1,6 @@
 'use client'
 import { useLanguage } from '@/app/LanguageContext'
+import { APP_URL, PRIVACY_URL } from '@/app/translations'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -19,8 +20,8 @@ export default function Footer() {
 
         <div className="flex gap-8">
           {([
-            [t.footer.privacy, 'https://shtirletzsled.ru/privacy'],
-            [t.footer.login, 'https://shtirletzsled.ru/login'],
+            [t.footer.privacy, PRIVACY_URL],
+            [t.footer.login, APP_URL],
           ] as const).map(([label, href]) => (
             <a key={href} href={href}
                className="font-[family-name:var(--font-mono)] text-[9px] tracking-[.12em]

@@ -1,31 +1,31 @@
 'use client'
 import { useLanguage } from '@/app/LanguageContext'
+import { CtaLink, LandingSection, SectionLabel, SectionTitle, cn } from '@/components/landing-ui'
 
 export default function Pricing() {
   const { t } = useLanguage()
 
   return (
-    <section id="pricing" className="bg-[#0A0A0A] py-28 md:py-36 px-6 md:px-16
-                                      border-t border-[#E8E0D4]/[.06]">
-      <div className="max-w-6xl mx-auto">
-        <div className="font-[family-name:var(--font-mono)] text-[10px] tracking-[.25em]
-                        uppercase text-[#C4955A]/60 mb-16">
-          {t.pricing.label}
-        </div>
+    <LandingSection id="pricing">
+        <SectionLabel>{t.pricing.label}</SectionLabel>
 
-        <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(32px,5vw,64px)]
-                       leading-[1] tracking-[.02em] text-[#E8E0D4] mb-16">
+        <SectionTitle className="mb-16">
           {t.pricing.heading}
-        </h2>
+        </SectionTitle>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.pricing.plans.map((p, i) => (
             <div key={i}
-                 className={`flex flex-col p-8 md:p-10
-                             border-l-[3px] bg-[#1A1A1A]
-                             ${p.featured
-                               ? 'border-l-[#C4955A]'
-                               : 'border-l-[#E8E0D4]/10'}`}>
+                 className={cn(
+                   'relative flex flex-col p-8 md:p-10 border-l-[3px]',
+                   p.featured
+                     ? 'border-l-[#C4955A] bg-[#1A1A1A] md:-my-4 md:py-12 shadow-[0_0_60px_-15px_rgba(196,149,90,0.25)]'
+                     : 'border-l-[#E8E0D4]/10 bg-[#1A1A1A]'
+                 )}>
+              {p.featured && (
+                <div className="absolute inset-0 pointer-events-none opacity-40"
+                     style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,149,90,0.08) 0%, transparent 70%)' }} />
+              )}
               {/* Label */}
               <div className="font-[family-name:var(--font-mono)] text-[10px] tracking-[.2em]
                               text-[#E8E0D4]/30 mb-8">
@@ -53,8 +53,8 @@ export default function Pricing() {
                   <div key={j}
                        className="flex items-center gap-3 py-2.5
                                   border-b border-[#E8E0D4]/[.04]">
-                    <span className="font-[family-name:var(--font-mono)] text-[10px] text-[#C4955A]/60">
-                      +
+                    <span className="font-[family-name:var(--font-mono)] text-[10px] text-[#4ADE80]/70">
+                      ✓
                     </span>
                     <span className="font-[family-name:var(--font-body)] text-[12px] text-[#E8E0D4]/40">
                       {f}
@@ -64,19 +64,18 @@ export default function Pricing() {
               </div>
 
               {/* CTA */}
-              <a href={p.href}
-                 className={`block text-center font-[family-name:var(--font-mono)] text-[10px]
-                             font-medium tracking-[.18em] uppercase py-3.5 no-underline
-                             transition-all duration-300
-                             ${p.featured
-                               ? 'bg-[#C4955A] text-[#0A0A0A] hover:bg-[#D4A56A]'
-                               : 'border border-[#E8E0D4]/15 text-[#E8E0D4]/40 hover:border-[#C4955A]/50 hover:text-[#C4955A]'}`}>
+              <CtaLink href={p.href}
+                       className={cn(
+                         'block text-center text-[10px] tracking-[.18em] py-3.5',
+                         p.featured
+                           ? 'bg-[#C4955A] text-[#0A0A0A] hover:bg-[#D4A56A]'
+                           : 'border border-[#E8E0D4]/15 text-[#E8E0D4]/40 hover:border-[#C4955A]/50 hover:text-[#C4955A]'
+                       )}>
                 {p.cta}
-              </a>
+              </CtaLink>
             </div>
           ))}
         </div>
-      </div>
-    </section>
+    </LandingSection>
   )
 }

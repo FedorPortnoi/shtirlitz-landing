@@ -1,14 +1,20 @@
 'use client'
 import { useLanguage } from '@/app/LanguageContext'
+import { APP_URL } from '@/app/translations'
+import { CtaLink, LandingSection } from '@/components/landing-ui'
 
 export default function FinalCTA() {
   const { t } = useLanguage()
 
   return (
-    <section className="bg-[#0A0A0A] border-t border-[#E8E0D4]/[.06]
-                        py-32 md:py-44 px-6 md:px-16">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(40px,8vw,100px)]
+    <LandingSection padding="py-32 md:py-44" innerClassName="relative max-w-3xl mx-auto text-center" className="relative overflow-hidden">
+        {/* Organic glow — contained to this section only */}
+        <div className="absolute inset-0 pointer-events-none"
+             style={{
+               background: 'radial-gradient(ellipse 50% 60% at 50% 40%, rgba(196,149,90,0.07) 0%, transparent 70%)',
+             }} />
+
+        <h2 className="relative font-[family-name:var(--font-bebas)] text-[clamp(40px,8vw,100px)]
                        leading-[0.9] tracking-[.03em] text-[#E8E0D4] mb-6">
           {t.finalCta.line1}
           <br />
@@ -23,16 +29,13 @@ export default function FinalCTA() {
           {t.finalCta.timeNote}
         </p>
 
-        <a href="https://shtirletzsled.ru/login"
-           className="inline-block font-[family-name:var(--font-mono)] text-[11px] font-medium
-                      tracking-[.22em] uppercase
+        <CtaLink href={APP_URL}
+           className="inline-block text-[11px] tracking-[.22em]
                       border border-[#C4955A] text-[#C4955A]
-                      px-14 py-4 no-underline
-                      transition-all duration-300
+                      px-14 py-4
                       hover:bg-[#C4955A] hover:text-[#0A0A0A]">
           {t.finalCta.cta}
-        </a>
-      </div>
-    </section>
+        </CtaLink>
+    </LandingSection>
   )
 }

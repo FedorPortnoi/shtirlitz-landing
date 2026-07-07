@@ -51,6 +51,25 @@ body {
   100% { transform: translateY(100vh); }
 }
 
+/* Glass surface — dark terminal variant, used by isolated sections that need panel depth */
+.glass {
+  position: relative;
+  background: rgba(232, 224, 212, 0.03);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(232, 224, 212, 0.08);
+  box-shadow:
+    0 1px 0 0 rgba(232, 224, 212, 0.05) inset,
+    0 20px 40px -20px rgba(0, 0, 0, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Selection */
 ::selection {
   background: #C4955A44;
